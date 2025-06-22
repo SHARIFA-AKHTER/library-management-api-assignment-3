@@ -2,27 +2,35 @@
 
 import { Borrow } from './borrow.model';
 import { sendResponse } from '../../utils/sendResponse';
-import { Request, Response } from 'express';
 import { Book } from '../book/book.model';
+import { RequestHandler } from 'express';
 
-export const borrowBook = async (req: Request, res: Response) =>{
+export const borrowBook:RequestHandler = async (req,res) =>{
     const {book, quantity, dueDate} = req.body;
 
     const existingBook = await Book.findById(book);
 
     if(!existingBook){
-        return res.status(404).json({
+       res.status(404).json({
             success: false,
             message: 'Book not found',
-        })
+        });
+        return;
     }
 
     if (existingBook.copies < quantity){
-        return res.status(400).json({
+        res.status(400).json({
             success: false,
             message: 'Not enough copies available'
         })
+        return
     }
+
+    existingBook.copies -= quantity;
+    if(existingBook.copies === 0){
+        existingBook.available = false;
+    }
+    await existingBook.save()
     const borrow = await Borrow.create({book, quantity, dueDate});
     sendResponse(res, {
         statusCode: 200,
@@ -34,7 +42,7 @@ export const borrowBook = async (req: Request, res: Response) =>{
 
 //Aggregation pipeline
 
-export const borrowedSummary = async(_req: Request, res: Response) =>{
+export const borrowedSummary: RequestHandler = async(_req, res) =>{
     const summary = await Borrow.aggregate([
         {
             $group:{
