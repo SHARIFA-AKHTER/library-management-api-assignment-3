@@ -6,6 +6,6 @@ import { borrowBook, borrowedSummary } from './borrow.controller';
 
 export const BorrowRoutes = express.Router();
 
-BorrowRoutes.post('/create-borrow', validateRequest(createBorrowZodSchema), borrowBook);
+BorrowRoutes.post('/', validateRequest(createBorrowZodSchema), borrowBook);
 
 BorrowRoutes.get('/', borrowedSummary);

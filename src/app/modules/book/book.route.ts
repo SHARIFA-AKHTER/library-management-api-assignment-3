@@ -6,7 +6,7 @@ import express from 'express';
 
 export const BookRoutes = express.Router();
 
-BookRoutes.post('/create-book',validateRequest(createBookZodSchema), createBook);
+BookRoutes.post('/',validateRequest(createBookZodSchema), createBook);
 
 BookRoutes.get('/', getAllBooks);
 

@@ -9,5 +9,5 @@ const validateRequest_1 = __importDefault(require("../../middlewares/validateReq
 const borrow_validation_1 = require("./borrow.validation");
 const borrow_controller_1 = require("./borrow.controller");
 exports.BorrowRoutes = express_1.default.Router();
-exports.BorrowRoutes.post('/create-borrow', (0, validateRequest_1.default)(borrow_validation_1.createBorrowZodSchema), borrow_controller_1.borrowBook);
+exports.BorrowRoutes.post('/', (0, validateRequest_1.default)(borrow_validation_1.createBorrowZodSchema), borrow_controller_1.borrowBook);
 exports.BorrowRoutes.get('/', borrow_controller_1.borrowedSummary);
