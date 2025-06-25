@@ -18,13 +18,12 @@ and borrowing in a library.
 
 ## 🔹 Book Routes
 
--`POST http://localhost:3000/books/create-book`
--`GET http://localhost:3000/books`
--`GET http://localhost:3000/books/685580d8cf43bf33564f8ddb`
--`PUT http://localhost:3000/books/685580d8cf43bf33564f8ddb`
--`DELETE http://localhost:3000/books/685580d8cf43bf33564f8ddb`
+-`POST http://localhost:3000/api/books`
+-`GET http://localhost:3000/api/books`
+-`GET thttp://localhost:3000/api/books/685c3421c1b6161cd1c53465`
+-`DELETE http://localhost:3000/api/books/685c3421c1b6161cd1c53465`
 
 ## 🔹 Borrow Routes
--`POST http://localhost:3000/borrow/create-borrow`
--`GET http://localhost:3000/borrow`
+-`POST http://localhost:3000/api/borrow`
+-`GET http://localhost:3000/api/borrow`
 
