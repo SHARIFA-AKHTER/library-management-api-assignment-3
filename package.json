@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "node api.js && ts-node-dev --respawn --transpile-only src/server.ts",
+    "dev": "node init && ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node api.js && node dist/server.js",
-    "build": "node api.js && tsc",
+    "start": "node init && node dist/server.js",
+    "build": "node init && tsc",
     "lint": "npx eslint .",
     "lint: fix": "npx eslint . --fix"
   },
@@ -19,6 +19,7 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongoose": "^8.16.0",
+    "node-fetch": "^3.3.2",
     "zod": "^3.25.67"
   },
   "devDependencies": {
